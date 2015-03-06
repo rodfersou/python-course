@@ -51,9 +51,8 @@
                 <section>
                     <h2>Programação do curso</h2>
                     <ul>
-                        <li class="fragment">Sábado de manhã - Introdução a linguagem Python</li>
-                        <li class="fragment">Sábado a tarde - Tópicos avançados</li>
-                        <li class="fragment">Domingo de manhã - Framework Pyramid</li>
+                        <li class="fragment">Sábado - Introdução a linguagem Python</li>
+                        <li class="fragment">Domingo - Framework Pyramid</li>
                     </ul>
                 </section>
                 <section>
@@ -453,215 +452,72 @@ TypeError: 'str' object does not support item assignment</code></pre>
                             </li>
                         </ul>
                     </section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Slice</h2>
-  <ul>
-      <li>
-          <h3>Observe que -0 é o mesmo que 0, logo neste caso não se conta a partir da direita!</h3>
-          <pre><code class="python">>>> palavra[-0]
+                    <section>
+                        <h2>Slice</h2>
+                        <ul>
+                            <li>
+                                Observe que -0 é o mesmo que 0, logo neste caso não se conta a partir da direita!
+                                <pre><code class="python">>>> palavra[-0]
 'A'</code></pre>
-      </li>
-  </ul>
-
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Slice</h2>
-  <ul>
-      <li>
-          <h3>Intervalos fora dos limites da string são truncados, mas não tente isso com índices simples (que não sejam fatias):</h3>
-          <pre><code class="python">>>> palavra[-100:]
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Slice</h2>
+                        <ul>
+                            <li>
+                                Intervalos fora dos limites da string são truncados, mas não tente isso com índices simples (que não sejam fatias):
+                                <pre><code class="python">>>> palavra[-100:]
 'AjudaZ'
 >>> palavra[-100]
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 IndexError: string index out of range
 >>></code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Slice</h2>
-  <ul>
-      <li class="slide">
-          <h3>Uma maneira de lembrar como slices funcionam é pensar que os índices indicam posições entre caracteres, onde a borda esquerda do primeiro caractere é 0. Assim, a borda direita do último caractere de uma string de comprimento n tem índice n, por exemplo:</h3>
-          <pre><code class="python"> 0   1   2   3   4   5   6
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Slice</h2>
+                        <ul>
+                            <li>
+                                Uma maneira de lembrar como slices funcionam é pensar que os índices indicam posições entre caracteres, onde a borda esquerda do primeiro caractere é 0. Assim, a borda direita do último caractere de uma string de comprimento n tem índice n, por exemplo:
+                                <pre><code class="python"> 0   1   2   3   4   5   6
  +---+---+---+---+---+---+
  | A | j | u | d | a | Z |
  +---+---+---+---+---+---+
 -6  -5  -4  -3  -2  -1</code></pre>
-      </li>
-      <li class="slide">
-          <h3>A primeira fileira de números indica a posição dos índices 0...6 na string; a segunda fileira indica a posição dos respectivos índices negativos. Uma fatia de i a j consiste em todos os caracteres entre as bordas i e j, respectivamente.</h3>
-      </li>
-      <li class="slide">
-          <h3>Para índices positivos, o comprimento da fatia é a diferença entre os índices, se ambos estão dentro dos limites da string. Por exemplo, comprimento de palavra[1:3] é 2.</h3>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Tamanho da String</h2>
-  <ul>
-      <li>
-          <h3>A função built-in (embutida) len() devolve o comprimento de uma string:</h3>
-          <pre><code class="python">>>> s = 'anticonstitucionalissimamente'
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Tamanho da String</h2>
+                        <ul>
+                            <li>
+                                A função built-in (embutida) len() devolve o comprimento de uma string:
+                                <pre><code class="python">>>> s = 'anticonstitucionalissimamente'
 >>> len(s)
 29</code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Strings Unicode</h2>
-  <ul>
-      <li>
-          <h3>Criar strings Unicode em Python é tão simples quanto criar strings normais:</h3>
-          <pre><code class="python">>>> u'Hello World !'
-u'Hello World !'</code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Strings Unicode</h2>
-  <ul>
-      <li class="slide">
-          <h3>O u antes das aspas indica a criação de uma string Unicode. Se você desejar incluir caracteres especiais na string, você pode fazê-lo através da codificação Unicode-Escape de Python. O exemplo a seguir mostra como:</h3>
-          <pre><code class="python">>>> u'Hello\u0020World !'
-u'Hello World !'</code></pre>
-      </li>
-      <li class="slide">
-          <h3>O código de escape \u0020 insere um caractere Unicode com valor ordinal 0x0020 (o espaço em branco) naquela posição.</h3>
-      </li>
-      <li class="slide">
-          <h3>Os outros caracteres são interpretados usando seus valores ordinais como valores ordinais em Unicode. Se você possui strings literais na codificação padrão Latin-1 que é usada na maioria dos países ocidentais, achará conveniente que os 256 caracteres inferiores do Unicode coincidem com os 256 caracteres do Latin-1.</h3>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Strings Unicode</h2>
-  <ul>
-      <li class="slide">
-          <h3>Para os experts, existe ainda um modo raw da mesma forma que existe para strings normais. Basta prefixar a string com ‘ur’ para usar a codificação Raw-Unicode-Escape. A conversão \uXXXX descrita acima será aplicada somente se houver um número ímpar de barras invertidas antes do escape ‘u’.</h3>
-          <pre><code class="python">>>> ur'Hello\u0020World !'
-u'Hello World !'
->>> ur'Hello\\u0020World !'
-u'Hello\\\\u0020World !'</code></pre>
-      </li>
-      <li class="slide">
-          <h3>O modo raw (cru) é muito útil para evitar o excesso de barras invertidas, por exemplo, em expressões regulares.</h3>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Strings Unicode</h2>
-  <ul>
-      <li class="slide">
-          <h3>Além dessas codificações padrão, Python oferece todo um conjunto de maneiras de se criar strings Unicode a partir de alguma codificação conhecida.</h3>
-      </li>
-      <li class="slide">
-          <h3>
-              <em>
-                  A função embutida unicode() dá acesso a todos os codecs Unicode registrados (COders e DECoders). Alguns dos codecs mais conhecidos são: Latin-1, ASCII, UTF-8, e UTF-16. Os dois últimos são codificações de tamanho variável para armazenar cada caractere Unicode em um ou mais bytes. (N.d.T: no Brasil, é muito útil o codec cp1252, variante estendida do Latin-1 usada na maioria das versões do MS Windows distribuídas no país, contendo caracteres comuns em textos, como aspas assimétricas “x” e ‘y’, travessão —, bullet • etc.).
-              </em>
-          </h3>
-      </li>
-      <li class="slide">
-          <h3><a href="http://docs.python.org/3.0/whatsnew/3.0.html#text-vs-data-instead-of-unicode-vs-8-bit" target="_blank">Tudo isso muda no Python 3</a></h3>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Strings Unicode</h2>
-  <ul>
-      <li>
-          <h3>A codificação default é ASCII, que trata normalmente caracteres no intervalo de 0 a 127 mas rejeita qualquer outro com um erro. Quando uma string Unicode é exibida, escrita em arquivo ou convertida por str(), esta codificação padrão é utilizada.:</h3>
-          <pre><code class="python">>>> u"abc"
-u'abc'
->>> str(u"abc")
-'abc'
->>> u"äöü"
-u'\xe4\xf6\xfc'
->>> str(u"äöü")
-Traceback (most recent call last):
-  File "<stdin>", line 1, in ?
-UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-2: ordinal not in range(128)</code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Strings Unicode</h2>
-  <ul>
-      <li>
-          <h3>Para converter uma string Unicode em uma string de 8-bits usando uma codificação específica, basta invocar o método encode() de objetos Unicode passando como parâmetro o nome da codificação destino. É preferível escrever nomes de codificação em letras minúsculas.</h3>
-          <pre><code class="python">>>> u"äöü".encode('utf-8')
-'\xc3\xa4\xc3\xb6\xc3\xbc'</code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Strings Unicode</h2>
-  <ul>
-      <li>
-          <h3>Se você tem um texto em uma codificação específica, e deseja produzir uma string Unicode a partir dele, pode usar a função unicode(), passando o nome da codificação de origem como segundo argumento.</h3>
-          <pre><code class="python">>>> unicode('\xc3\xa4\xc3\xb6\xc3\xbc', 'utf-8')
-u'\xe4\xf6\xfc'</code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Listas</h2>
-  <ul>
-      <li>
-          <h3>Python inclui diversas estruturas de dados compostas, usadas para agrupar outros valores. A mais versátil é list (lista), que pode ser escrita como uma lista de valores (itens) separados por vírgula, entre colchetes. Os valores contidos na lista não precisam ser todos do mesmo tipo.</h3>
-          <pre><code class="python">>>> a = ['spam', 'eggs', 100, 1234]
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Listas</h2>
+                        <ul>
+                            <li>
+                                Python inclui diversas estruturas de dados compostas, usadas para agrupar outros valores. A mais versátil é list (lista), que pode ser escrita como uma lista de valores (itens) separados por vírgula, entre colchetes. Os valores contidos na lista não precisam ser todos do mesmo tipo.
+                                <pre><code class="python">>>> a = ['spam', 'eggs', 100, 1234]
 >>> a
 ['spam', 'eggs', 100, 1234]</code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Listas</h2>
-  <ul>
-      <li>
-          <h3>Da mesma forma que índices de string, índices de lista começam em 0, listas também podem ser concatenadas, fatiadas e multiplicadas:</h3>
-          <pre><code class="python">>>> a[0]
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Listas</h2>
+                        <ul>
+                            <li>
+                                Da mesma forma que índices de string, índices de lista começam em 0, listas também podem ser concatenadas, fatiadas e multiplicadas:
+                                <pre><code class="python">>>> a[0]
 'spam'
 >>> a[3]
 1234
@@ -669,35 +525,29 @@ u'\xe4\xf6\xfc'</code></pre>
 100
 >>> a[1:-1]
 ['eggs', 100]
->>> a[:2] + ['bacon', 2*2]
+>>> a[:2] + ['bacon', 2 * 2]
 ['spam', 'eggs', 'bacon', 4]
->>> 3*a[:3] + ['Boo!']
+>>> 3 * a[:3] + ['Boo!']
 ['spam', 'eggs', 100, 'spam', 'eggs', 100, 'spam', 'eggs', 100, 'Boo!']</code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Listas</h2>
-  <ul>
-      <li>
-          <h3>Todas as operações de fatiamento devolvem uma nova lista contendo os elementos solicitados. Isto significa que o fatiamento a seguir retorna uma cópia rasa (shallow copy) da lista:</h3>
-          <pre><code class="python">>>> a[:]
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Listas</h2>
+                        <ul>
+                            <li>
+                                Todas as operações de fatiamento devolvem uma nova lista contendo os elementos solicitados. Isto significa que o fatiamento a seguir retorna uma cópia rasa (shallow copy) da lista:
+                                <pre><code class="python">>>> a[:]
 ['spam', 'eggs', 100, 1234]</code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Listas</h2>
-  <ul>
-      <li>
-          <h3>Atribuição à fatias também é possível, e isso pode até alterar o tamanho da lista ou remover todos os itens dela:</h3>
-          <pre><code class="python">>>> # Substituir alguns itens:
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Listas</h2>
+                        <ul>
+                            <li>
+                                Atribuição à fatias também é possível, e isso pode até alterar o tamanho da lista ou remover todos os itens dela:
+                                <pre><code class="python">>>> # Substituir alguns itens:
 ... a[0:2] = [1, 12]
 >>> a
 [1, 12, 123, 1234]
@@ -717,32 +567,26 @@ u'\xe4\xf6\xfc'</code></pre>
 >>> a[:] = []
 >>> a
 []</code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Listas</h2>
-  <ul>
-      <li>
-          <h3>A função embutida len() também se aplica a listas:</h3>
-          <pre><code class="python">>>> a = ['a', 'b', 'c', 'd']
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Listas</h2>
+                        <ul>
+                            <li>
+                                A função embutida len() também se aplica a listas:
+                                <pre><code class="python">>>> a = ['a', 'b', 'c', 'd']
 >>> len(a)
 4</code></pre>
-      </li>
-  </ul>
-</section>
-
-
-<section class="slide">
-  <h2 class="logo-python-64">Python</h2>
-  <h2 class="center">Listas</h2>
-  <ul>
-      <li>
-          <h3>É possível aninhar listas (criar listas contendo outras listas), por exemplo:</h3>
-          <pre><code class="python">>>> q = [2, 3]
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Listas</h2>
+                        <ul>
+                            <li>
+                                É possível aninhar listas (criar listas contendo outras listas), por exemplo:
+                                <pre><code class="python">>>> q = [2, 3]
 >>> p = [1, q, 4]
 >>> len(p)
 3
@@ -755,17 +599,450 @@ u'\xe4\xf6\xfc'</code></pre>
 [1, [2, 3, 'xtra'], 4]
 >>> q
 [2, 3, 'xtra']</code></pre>
-      </li>
-      <li class="slide">
-          <h3><em>Observe que no último exemplo, p[1] e q na verdade se referem ao mesmo objeto! Mais tarde retornaremos a semântica dos objetos.</em></h3>
-      </li>
-  </ul>
-</section>
-
-
-
-
-
+                            </li>
+                            <li class="fragment">
+                                <em>Observe que no último exemplo, p[1] e q na verdade se referem ao mesmo objeto! Mais tarde retornaremos a semântica dos objetos.</em>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Primeiros passos rumo à programação</h2>
+                        <ul>
+                            <li>
+                                Naturalmente, podemos utilizar Python para tarefas mais complicadas do que somar 2+2. Por exemplo, podemos escrever o início da sequência de Fibonacci assim:
+                                <pre><code class="python">>>> # Sequência de Fibonacci:
+... # a soma de dois elementos define o próximo
+... a, b = 0, 1
+>>> while b < 10:
+...     print(b)
+...     a, b = b, a + b
+...
+1
+1
+2
+3
+5
+8</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Primeiros passos rumo à programação</h2>
+                        <ul>
+                            <li>
+                                Naturalmente, podemos utilizar Python para tarefas mais complicadas do que somar 2+2. Por exemplo, podemos escrever o início da sequência de Fibonacci assim:
+                                <pre><code class="python">>>> # Sequência de Fibonacci:
+... # a soma de dois elementos define o próximo
+... a, b = 0, 1
+>>> while b < 10:
+...     print(b, end=' ')
+...     a, b = b, a + b
+...
+1 1 2 3 5 8</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Este exemplo introduz diversas características ainda não mencionadas.</h2>
+                        <ol>
+                            <li>
+                                <em>A primeira linha contém uma atribuição múltipla: as variáveis a e b recebem simultaneamente os novos valores 0 e 1. Na última linha há outro exemplo de atribuição múltipla demonstrando que expressões do lado direito são sempre avaliadas primeiro, antes da atribuição. As expressões do lado direito são avaliadas da esquerda para a direita.</em>
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <ol start="2">
+                            <li>
+                                <em>O laço while executa enquanto a condição (aqui: b < 10) permanecer verdadeira. Em Python, como em C, qualquer valor não-zero é considerado verdadeiro, zero é considerado falso. A condição pode ser ainda uma lista ou string, na verdade qualquer sequência; qualquer coisa com comprimento maior que zero tem valor verdadeiro e sequências vazias são falsas. O teste utilizado no exemplo é uma comparação simples. Os operadores padrão para comparação são os mesmos de C: < (menor que), > (maior que), == (igual), <= (menor ou igual), >= (maior ou igual) e != (diferente).</em>
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <ol start="3">
+                            <li>
+                                <em>O corpo do laço é indentado: indentação em Python é a maneira de agrupar comandos em blocos. No console interativo padrão você terá que digitar tab ou espaços para indentar cada linha. Na prática você vai preparar scripts Python mais complicados em um editor de texto; a maioria dos editores de texto tem facilidades de indentação automática. Quando um comando composto é digitado interativamente, deve ser finalizado por uma linha em branco (já que o parser não tem como adivinhar qual é a última linha do comando). Observe que toda linha de um mesmo bloco de comandos deve ter a mesma indentação</em>
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <ol start="4">
+                            <li>
+                                <em>O comando print escreve o valor da expressão ou expressões fornecidas. É diferente de apenas escrever a expressão no interpretador (como fizemos nos exemplos da calculadora) pela forma como lida com múltiplas expressões e strings. Strings são exibidas sem aspas, e um espaço é inserido entre os itens para formatar o resultado assim:</em>
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <ol start="5">
+                            <li>
+                                <em>Podemos mudar o comportamento da função print para colocar tudo em uma linha.</em>
+                            </li>
+                        </ol>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Comando if</h2>
+                        <ul>
+                            <li>
+                                Provavelmente o mais conhecido comando de controle de fluxo é o if. Por exemplo:
+                                <pre><code class="python">>>> x = int(raw_input("Favor digitar um inteiro: "))
+Favor digitar um inteiro: 42
+>>> if x < 0:
+...      x = 0
+...      print 'Negativo alterado para zero'
+... elif x == 0:
+...      print 'Zero'
+... elif x == 1:
+...      print 'Unidade'
+... else:
+...      print 'Mais'
+...
+Mais</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Comando if</h2>
+                        <ul>
+                            <li class="slide">
+                                Pode haver zero ou mais seções elif, e a seção else é opcional. A palavra-chave elif é uma abreviação para ‘else if’, e é útil para evitar indentação excessiva. Uma sequência if ... elif ... elif ... substitui as construções switch ou case existentes em outras linguagens.
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Comando for</h2>
+                        <pre><code class="python">>>> # Medir o tamanho de algumas strings:
+>>> a = ['gato', 'janela', 'defenestrar']
+>>> for x in a:
+...     print x, len(x)
+...
+gato 4
+janela 6
+defenestrar 11
+>>></code></pre>
+                    </section>
+                    <section>
+                        <h2>Comando for</h2>
+                        <ol>
+                            <li>
+                                O comando for em Python difere um tanto do que você talvez esteja acostumado em C ou Pascal. Ao invés de se iterar sobre progressões aritméticas (como em Pascal), ou dar ao usuário o poder de definir tanto o passo da iteração quanto a condição de parada (como em C), o comando for de Python itera sobre os itens de qualquer sequência (como uma lista ou uma string), na ordem em que eles aparecem na sequência. Por exemplo:
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>Comando for</h2>
+                        <ol start="2">
+                            <li>
+                                Não é seguro modificar a sequência sobre a qual se baseia o laço de iteração (isto pode acontecer se a sequência for mutável, isto é, uma lista). Se você precisar modificar a lista sobre a qual está iterando (por exemplo, para duplicar itens selecionados), você deve iterar sobre uma cópia da lista ao invés da própria. A notação de fatiamento é bastante conveniente para isso:
+                                <pre><code class="python">>>> for x in a[:]: # fazer uma cópia da lista inteira
+...    if len(x) > 6: a.insert(0, x)
+...
+>>> a
+['defenestrar', 'gato', 'janela', 'defenestrar']</code></pre>
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>A função range()</h2>
+                        <ul>
+                            <li>
+                                Se você precisar iterar sobre sequências numéricas, a função embutida range() é a resposta. Ela gera listas contendo progressões aritméticas, por exemplo:
+                                <pre><code class="python">>>> range(10)</code></pre>
+                                <pre class="fragment"><code class="python">range(0, 10)</code></pre>
+                                <pre class="fragment"><code class="python">>>> for i in range(10):
+...     print(i, end=' ')
+...
+0 1 2 3 4 5 6 7 8 9</code></pre>
+                                <pre class="fragment"><code class="python">>>> list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>A função range()</h2>
+                        <ul>
+                            <li>
+                                O ponto de parada fornecido nunca é incluído na lista; range(10) gera uma lista com 10 valores, exatamente os índices válidos para uma sequência de comprimento 10. É possível iniciar o intervalo em outro número, ou alterar a razão da progressão (inclusive com passo negativo):
+                                <pre><code class="python">>>> list(range(5, 10))
+[5, 6, 7, 8, 9]
+>>> list(range(0, 10, 3))
+[0, 3, 6, 9]
+>>> list(range(-10, -100, -30))
+[-10, -40, -70]</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>A função range()</h2>
+                        <ul>
+                            <li>
+                                Para iterar sobre os índices de uma sequência, combine range() e len() da seguinte forma:
+                                <pre><code class="python">>>> a = ['Maria', 'tinha', 'um', 'cordeirinho']
+>>> for i in range(len(a)):
+...     print(i, a[i])
+...
+0 Maria
+1 tinha
+2 um
+3 cordeirinho</code></pre>
+                          </li>
+                          <li class="fragment">
+                              Na maioria dos casos como este, porém, é mais conveniente usar a função enumerate(), veja <a href="http://turing.com.br/pydoc/2.7/tutorial/datastructures.html#tut-loopidioms" target="_blank">Técnicas de iteração</a>.
+                          </li>
+                      </ul>
+                    </section>
+                    <section>
+                        <h2>Comandos break e continue, e cláusulas else em laços</h2>
+                        <pre><code class="python">>>> for n in range(2, 10):
+...     for x in range(2, n):
+...         if n % x == 0:
+...             print(n, '=', x, '*', n/x)
+...             break
+...     else:
+...         # laço terminou sem encontrar um fator
+...         print(n, 'é um número primo')
+...
+2 é um número primo
+3 é um número primo
+4 = 2 * 2
+5 é um número primo
+6 = 2 * 3
+7 é um número primo
+8 = 2 * 4
+9 = 3 * 3</code></pre>
+                        <ul>
+                            <li>
+                                (Sim, este é o código correto. Olhe atentamente: a cláusula else pertence ao laço for, e não ao comando if.)
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Comandos break e continue, e cláusulas else em laços</h2>
+                        <ul>
+                            <li>
+                                Laços podem ter uma cláusula else, que é executada sempre que o laço se encerra por exaustão da lista (no caso do for) ou quando a condição se torna falsa (no caso do while), mas nunca quando o laço é interrompido por um break. Isto é exemplificado no próximo exemplo que procura números primos:
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Comandos break e continue, e cláusulas else em laços</h2>
+                        <ul>
+                            <li>
+                                O comando break, como em C, interrompe o laço for ou while mais interno.
+                            </li>
+                            <li>
+                                O comando continue, também emprestado de C, avança para a próxima iteração do laço mais interno.
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Comando pass</h2>
+                        <ul>
+                            <li>
+                                O comando pass não faz nada. Ela pode ser usada quando a sintaxe exige um comando mas a semântica do programa não requer nenhuma ação. Por exemplo:
+                                <pre><code class="python">>>> while True:
+...     pass  # esperar interrupção via teclado (Ctrl+C)
+...</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Comando pass</h2>
+                        <ul>
+                            <li>
+                                Isto é usado muitas vezes para se definir classes mínimas:
+                                <pre><code class="python">>>> class MinhaClasseVazia:
+...     pass
+...</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Comando pass</h2>
+                        <ul>
+                            <li>
+                                Outra situação em que pass pode ser usado é para reservar o lugar de uma função ou de um bloco condicional, quando você está trabalhando em código novo, o que lhe possibilita continuar a raciocinar em um nível mais abstrato. O comando pass é ignorado silenciosamente:
+                                <pre><code class="python">>>> def initlog(*args):
+...     pass   # Lembrar de implementar isto!
+...</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Definindo Funções</h2>
+                        <div class="half">
+                            <ul>
+                                <li>
+                                    Podemos criar uma função que escreve a série de Fibonacci até um limite arbitrário:
+                                    <pre><code class="python">>>> def fib(n):    # escrever série de Fibonacci até n
+...     """Exibe série de Fibonacci até n"""
+...     a, b = 0, 1
+...     while a < n:
+...         print(a, end=' ')
+...         a, b = b, a + b
+...
+>>> # Agora invocamos a funçao que acabamos de definir:
+... fib(2000)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597</code></pre>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Definindo Funções</h2>
+                        <ol>
+                            <li>
+                                A palavra reservada def inicia a definição de uma função. Ela deve ser seguida do nome da função e da lista de parâmetros formais entre parênteses. Os comandos que formam o corpo da função começam na linha seguinte e devem ser indentados.
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <ol start="2">
+                            <li>
+                                Opcionalmente, a primeira linha lógica do corpo da função pode ser uma string literal, cujo propósito é documentar a função. Se presente, essa string chama-se docstring. (Há mais informação sobre docstrings na seção Strings de documentação.) Existem ferramentas que utilizam docstrings para produzir automaticamente documentação online ou para imprimir, ou ainda permitir que o usuário navegue interativamente pelo código. É uma boa prática incluir sempre docstrings em suas funções, portanto, tente fazer disto um hábito.
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <ol start="3">
+                            <li>
+                                A execução de uma função gera uma nova tabela de símbolos, usada para as variáveis locais da função. Mais precisamente, toda atribuição a variável dentro da função armazena o valor na tabela de símbolos local. Referências a variáveis são buscadas primeiramente na tabela local, então na tabela de símbolos global e finalmente na tabela de nomes embutidos (built-in). Portanto, não se pode atribuir diretamente um valor a uma variável global dentro de uma função (a menos que se utilize a declaração global antes), ainda que variáveis globais possam ser referenciadas livremente.
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <ol start="4">
+                            <li>
+                                Os parâmetros reais (argumentos) de uma chamada de função são introduzidos na tabela de símbolos local da função no momento da invocação, portanto, argumentos são passados por valor (onde o valor é sempre uma referência para objeto, não o valor do objeto). [1] Quando uma função invoca outra, uma nova tabela de símbolos é criada para tal chamada.
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>Definindo Funções</h2>
+                        <ul>
+                            <li>
+                                Uma definição de função introduz o nome da função na tabela de símbolos atual. O valor associado ao nome da função tem um tipo que é reconhecido pelo interpretador como uma função definida pelo usuário. Esse valor pode ser atribuído a outros nomes que também podem ser usados como funções. Esse mecanismo serve para renomear funções:
+                                <pre><code class="python">>>> fib
+<function fib at 10042ed0>
+>>> f = fib
+>>> f(100)
+0 1 1 2 3 5 8 13 21 34 55 89</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Definindo Funções</h2>
+                        <ul>
+                            <li>
+                                Conhecendo outras linguagens, você pode questionar que fib não é uma função, mas um procedimento, pois ela não devolve um valor. Na verdade, mesmo funções que não usam o comando return devolvem um valor, ainda que pouco interessante. Esse valor é chamado None (é um nome embutido). O interpretador interativo evita escrever None quando ele é o único resultado de uma expressão. Mas se quiser vê-lo pode usar o comando print:
+                                <pre><code class="python">>>> fib(0)
+>>> print(fib(0))
+None</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Definindo Funções</h2>
+                        <ul>
+                            <li>
+                                É fácil escrever uma função que devolve uma lista de números série de Fibonacci, ao invés de exibi-los:
+                                <pre><code class="python">>>> def fib2(n):  # devolve a série de Fibonacci até n
+...     """Devolve uma lista a com série de Fibonacci até n."""
+...     resultado = []
+...     a, b = 0, 1
+...     while a < n:
+...         resultado.append(a)  # veja mais adiante
+...         a, b = b, a + b
+...     return resultado
+...
+>>> f100 = fib2(100)  # executar
+>>> f100 # exibir o resultado
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Definindo Funções</h2>
+                        Este exemplo, como sempre, demonstra algumas características novas:
+                        <ol>
+                            <li>
+                                O comando return termina a função devolvendo um valor. Se não houver uma expressão após o return, o valor None é devolvido. Se a função chegar ao fim sem o uso explícito do return, então também será devolvido o valor None.
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>Definindo Funções</h2>
+                        <ol start="2">
+                            <li>
+                                O trecho resultado.append(a) invoca um método do objeto lista resultado. Um método é uma função que “pertence” a um objeto e é chamada através de obj.nome_do_metodo onde obj é um objeto qualquer (pode ser uma expressão), e nome_do_metodo é o nome de um método que foi definido pelo tipo do objeto. Tipos diferentes definem métodos diferentes.
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>Definindo Funções</h2>
+                        <ol start="3">
+                            <li>
+                                Métodos de diferentes tipos podem ter o mesmo nome sem ambiguidade. (É possível definir seus próprios tipos de objetos e métodos, utilizando classes) O método append() mostrado no exemplo é definido para objetos do tipo lista; ele adiciona um novo elemento ao final da lista. Neste exemplo, ele equivale a resultado = resultado + [a], só que mais eficiente.
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>Parâmetros com valores padrões</h2>
+                        Os parâmetros de funções e métodos python, podem vir com um valor padrão, o que da a liberdade de não informar um parâmetro na execução da função. Por exemplo:
+                        <pre><code class="python">def confirmar(pergunta, tentativas=4,
+              reclamacao='Sim ou não, por favor!'):
+    while True:
+        ok = raw_input(pergunta).lower()
+        if ok in ('s', 'si', 'sim'):
+            return True
+        if ok in ('n', 'no', 'não', 'nananinanão'):
+            return False
+        tentativas = tentativas - 1
+        if tentativas == 0:
+            raise IOError('usuario nao quer cooperar')
+        print reclamacao</code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Essa função pode ser invocada de várias formas:</h2>
+                        <ol>
+                            <li>
+                                fornecendo apenas o argumento obrigatório: confirmar('Deseja mesmo encerrar?')
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <ol start="2">
+                            <li>
+                                fornecendo um dos argumentos opcionais: confirmar('Sobrescrever o arquivo?', 2)
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <ol start="3">
+                            <li>
+                                fornecendo todos os argumentos: confirmar('Sobrescrever o arquivo?', 2, 'Escolha apenas s ou n')
+                            </li>
+                        </ol>
+                        Este exemplo também introduz o operador in, que verifica se uma sequência contém ou não um determinado valor.
+                    </section>
+                    <section>
+                        <ol start="4">
+                            <li>
+                                fornecendo o argumento obrigatório e qualquer outro argumento nomeado: confirmar('Sobrescrever o arquivo?', reclamacao='Escolha apenas s ou n')
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        Este exemplo também introduz o operador in, que verifica se uma sequência contém ou não um determinado valor.
+                    </section>
 
 
 
